@@ -1,7 +1,14 @@
+chrome.runtime.onMessage.addListener(function (request) { 
+   if(request == "on"){
+      document.querySelector('html').style.filter = 'grayscale(100%)'
+   }
+   if(request == "off"){
+      document.querySelector('html').style.filter = 'grayscale(0%)'
+   }
 
-   // document.querySelector("*").style.color = "rgb(0,130,140)";
-   // document.querySelector("*").style.backgroundColor = "rgb(0,0,140)";
-   document.querySelector('html').style.filter = 'invert(100%)'
+ })
+
+
 
 
    
