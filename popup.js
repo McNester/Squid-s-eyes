@@ -3,6 +3,46 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     var isToggleTurnedOn = false;
 
+    
+
+
+    //-1- none
+
+
+    // 0- prot
+    // 1- deut
+    // 2- tritan
+    // 3- mono
+    var kindOfBlindness = -1;
+
+
+
+    const protBtn = document.querySelector("#prot");
+    const deutBtn = document.querySelector("#deut");
+    const tritanBtn = document.querySelector("#tritan");
+    const monoBtn = document.querySelector("#mono");
+
+
+
+    protBtn.addEventListener('click',function(){
+        
+        kindOfBlindness = 0;
+    })
+
+    deutBtn.addEventListener('click',function(){
+        kindOfBlindness = 1;
+    })
+
+    tritanBtn.addEventListener('click',function(){
+        kindOfBlindness = 2;
+    })
+
+    monoBtn.addEventListener('click',function(){
+        kindOfBlindness = 3;
+    })
+
+
+
 
     document.querySelector('.checkbox').addEventListener('click',toggleChanged )
 
@@ -20,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
             chrome.tabs.query({currentWindow: true, active: true},
                 function(tabs){
-                    chrome.tabs.sendMessage(tabs[0].id,'on')
+                    chrome.tabs.sendMessage(tabs[0].id,kindOfBlindness)
                 }
             )
 
@@ -39,4 +79,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         
     }
+
+
+
 },false);

@@ -33,6 +33,43 @@ body
     
 }
 
+#buttonsContainer{
+    display: inline-block;
+    margin-left: 50%;
+    margin-top: 50%;
+    
+    transform: translate(-50%,-50%);
+
+    text-align: center;
+    
+}
+
+.blindness{
+    margin: 7%;
+    text-align: center;
+
+    
+    width: 40vmax;
+    height: 10vmax;
+    border:1px solid #0066ff;
+    border-radius: 5px;
+    font-family: Trebuchet MS;
+    background-color: #0066ff;
+    color: #ffe600;
+    font-size: 4.5vmax;
+    text-align: center;
+
+
+}
+
+
+
+.blindness:active{
+    background-color: #055bdb;
+    border:1px solid #055bdb;
+}
+
+
 
 
 
@@ -115,7 +152,7 @@ body
 {
     content: 'ON';
     left: 42px;
-    background-color: #03A9F4;
+    background-color: #1A85FF;
 }
 
 #button-1 .checkbox:checked ~ .layer
