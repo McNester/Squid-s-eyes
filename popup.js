@@ -1,9 +1,24 @@
-document.addEventListener("DOMContentLoaded", function(event) { 
-    
+document.addEventListener("DOMContentLoaded", function (event) {
 
     var isToggleTurnedOn = false;
 
+    var filter = '<svg>\
+        <filter id="deuteranopia">\
+            <feColorMatrix values="0.367  0.861 -0.228  0.000  0.000\
+                                     0.280  0.673  0.047  0.000  0.000\
+                                    -0.012  0.043  0.969  0.000  0.000\
+                                     0.000  0.000  0.000  1.000  0.000">\
+            </feColorMatrix>\
+        </filter>\
+    </svg>';
+
+
+
+
+   
     
+
+
 
 
     //-1- none
@@ -24,62 +39,62 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 
-    protBtn.addEventListener('click',function(){
-        
+    protBtn.addEventListener('click', function () {
+
         kindOfBlindness = 0;
     })
 
-    deutBtn.addEventListener('click',function(){
+    deutBtn.addEventListener('click', function () {
         kindOfBlindness = 1;
     })
 
-    tritanBtn.addEventListener('click',function(){
+    tritanBtn.addEventListener('click', function () {
         kindOfBlindness = 2;
     })
 
-    monoBtn.addEventListener('click',function(){
+    monoBtn.addEventListener('click', function () {
         kindOfBlindness = 3;
     })
 
 
 
 
-    document.querySelector('.checkbox').addEventListener('click',toggleChanged )
+    document.querySelector('.checkbox').addEventListener('click', toggleChanged)
 
-    function toggleChanged(){
+    function toggleChanged() {
 
         document.querySelector('.layer').addEventListener("transitionend", showAlert);
-        
-    
+
+
 
     }
 
-    function showAlert(){
-        if(isToggleTurnedOn == false){
+    function showAlert() {
+        if (isToggleTurnedOn == false) {
             isToggleTurnedOn = true;
 
-            chrome.tabs.query({currentWindow: true, active: true},
-                function(tabs){
-                    chrome.tabs.sendMessage(tabs[0].id,kindOfBlindness)
+            chrome.tabs.query({ currentWindow: true, active: true },
+                function (tabs) {
+                    chrome.tabs.sendMessage(tabs[0].id, kindOfBlindness)
                 }
             )
 
-         
+
 
             return;
         }
 
         isToggleTurnedOn = false;
 
-        chrome.tabs.query({currentWindow: true, active: true},
-            function(tabs){
-                chrome.tabs.sendMessage(tabs[0].id,'off')
+        chrome.tabs.query({ currentWindow: true, active: true },
+            function (tabs) {
+                chrome.tabs.sendMessage(tabs[0].id, 'off')
             }
         )
 
-        
+
     }
 
 
 
-},false);
+}, false);
