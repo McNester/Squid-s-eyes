@@ -7,44 +7,52 @@ chrome.runtime.onMessage.addListener(function (request) {
    if (request == 0) {
 
       document.querySelector('html').style.filter = 'hue-rotate(167deg)'
-      
+
    }
 
 
    if (request == 1) {
+
       var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 
-      svg.setAttribute("display","none");
-      
+      svg.setAttribute("display", "none");
+
       svg.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
-  
+
       var filter = document.createElementNS("http://www.w3.org/2000/svg", "filter");
-      filter.setAttribute("id","deuteranopia");
-      
-  
+      filter.setAttribute("id", "deuteranopia");
+
+
       var feColorMatrix = document.createElementNS("http://www.w3.org/2000/svg", "feColorMatrix");
 
 
-      feColorMatrix.setAttribute("values","1 0 0 0 0\
-                                           0 1 0 0 0\
-                                           0 0 1 0 0\
-                                           0 0 0 1 0");
-  
-  
-  
+      /*feColorMatrix.setAttribute("values","0 1 1 0 0\
+                                           1 0 0 0 0\
+                                           0 1 1 0 0\
+                                           0 0 0 1 0");*/
+
+
+
+      feColorMatrix.setAttribute("values","0.367  0.861 -0.228  0.000  0.000\
+                                           0.280  0.673  0.047  0.000  0.000\
+                                          -0.012  0.043  0.969  0.000  0.000\
+                                           0.000  0.000  0.000  1.000  0.000");
+
+
+
       filter.appendChild(feColorMatrix);
-  
-      svg.appendChild(filter);    
-  
-      
-  
-      
-      
-  
+
+      svg.appendChild(filter);
+
+
+
+
+
+
       document.querySelector('body').appendChild(svg);
-  
+
       document.querySelector('html').style.filter = "url('#deuteranopia')";
-      
+
    }
 
 
